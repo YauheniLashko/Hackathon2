@@ -18,7 +18,6 @@ def run():
         window.blit(background, (0, 0))
         events.event()
         hero.update()
-        window.blit(hero.image, hero.rect)
         pygame.display.update()
         clock.tick(60)
 

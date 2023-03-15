@@ -31,22 +31,17 @@ class Hero(pygame.sprite.Sprite):
         self.rect = self.image.get_rect(bottom=450)
 
 
+
     def update(self):
-        for event in pygame.event.get():
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_RIGHT:
-                    self.window.blit(self.move_right[self.pick_ind // 6], (self.rect))
-                if event.key == pygame.K_LEFT:
-                    self.window.blit(self.move_left[self.pick_ind // 6], (self.rect))
+        self.image = self.move_right[self.pick_ind // 6]
         keys = pygame.key.get_pressed()
+
         if keys[pygame.K_RIGHT]:
-            self.window.blit(self.move_right[self.pick_ind // 6], (self.rect))
-        if keys[pygame.K_LEFT]:
-            self.window.blit(self.move_left[self.pick_ind // 6], (self.rect))
-        if keys[pygame.K_RIGHT]:
+            self.image = self.move_right[self.pick_ind // 6]
             self.rect.x += self.speed
             print(self.rect.x)
         if keys[pygame.K_LEFT]:
+            self.image = self.move_left[self.pick_ind // 6]
             self.rect.x -= self.speed
             print(self.rect.x)
         if keys[pygame.K_UP] and self.rect.y > 140:
@@ -58,3 +53,5 @@ class Hero(pygame.sprite.Sprite):
             self.pick_ind += 1
         else:
             self.pick_ind = 0
+
+        self.window.blit(self.image, (self.rect))
