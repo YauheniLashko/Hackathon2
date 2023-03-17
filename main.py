@@ -1,25 +1,27 @@
 import pygame
 import events
 from hero import Hero
+import background as bg
 
-WIDTH = 1200
-HEIGHT = 800
 
 def run():
     pygame.init()
     pygame.display.set_caption("Underwater Adventure")
-    window = pygame.display.set_mode((WIDTH, HEIGHT))
-    background = pygame.transform.scale(pygame.image.load('Images/bg.jpg'), (WIDTH, HEIGHT))
+    window = pygame.display.set_mode((bg.WIDTH, bg.HEIGHT))
     clock = pygame.time.Clock()
     hero = Hero(window)
+    background = bg.Background()
 
 
     while True:
-        window.blit(background, (0, 0))
+
+        background.update()
+        background.render(window)
         events.event()
         hero.update()
         pygame.display.update()
         clock.tick(60)
+
 
 if __name__ == '__main__':
     run()

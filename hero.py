@@ -1,5 +1,5 @@
 import pygame
-import events
+
 
 class Hero(pygame.sprite.Sprite):
     def __init__(self, window):
@@ -28,27 +28,18 @@ class Hero(pygame.sprite.Sprite):
                           pygame.transform.scale(pygame.image.load('Images/left9.png').convert_alpha(), (250, 120)),
                           pygame.transform.scale(pygame.image.load('Images/left10.png').convert_alpha(), (250, 120))]
         self.image = self.move_right[self.pick_ind]
-        self.rect = self.image.get_rect(bottom=450)
-
-
+        self.rect = self.image.get_rect(center=(600,400))  # размещаем персонажа по центру слева
 
     def update(self):
-        self.image = self.move_right[self.pick_ind // 6]
-        keys = pygame.key.get_pressed()
 
-        if keys[pygame.K_RIGHT]:
-            self.image = self.move_right[self.pick_ind // 6]
-            self.rect.x += self.speed
-            print(self.rect.x)
+        self.image = self.move_right[self.pick_ind // 6]  # анимируем картинку в момент ненажатия клавиш движения
+        keys = pygame.key.get_pressed()
         if keys[pygame.K_LEFT]:
             self.image = self.move_left[self.pick_ind // 6]
-            self.rect.x -= self.speed
-            print(self.rect.x)
         if keys[pygame.K_UP] and self.rect.y > 140:
             self.rect.y -= self.speed
         if keys[pygame.K_DOWN] and self.rect.y < 620:
             self.rect.y += self.speed
-
         if self.pick_ind < 54:
             self.pick_ind += 1
         else:
