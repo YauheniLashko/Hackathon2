@@ -29,13 +29,18 @@ class Hero(pygame.sprite.Sprite):
                           pygame.transform.scale(pygame.image.load('Images/left10.png').convert_alpha(), (250, 120))]
         self.image = self.move_right[self.pick_ind]
         self.rect = self.image.get_rect(center=(600,400))  # размещаем персонажа по центру слева
+        self.life = 3
 
     def update(self):
 
         self.image = self.move_right[self.pick_ind // 6]  # анимируем картинку в момент ненажатия клавиш движения
         keys = pygame.key.get_pressed()
+        if keys[pygame.K_RIGHT]:
+            self.image = self.move_right[self.pick_ind // 6]
+            self.rect.x += self.speed
         if keys[pygame.K_LEFT]:
             self.image = self.move_left[self.pick_ind // 6]
+            self.rect.x -= self.speed
         if keys[pygame.K_UP] and self.rect.y > 140:
             self.rect.y -= self.speed
         if keys[pygame.K_DOWN] and self.rect.y < 620:

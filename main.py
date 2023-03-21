@@ -1,6 +1,7 @@
 import pygame
 import events
 from hero import Hero
+
 import background as bg
 
 
@@ -10,6 +11,7 @@ def run():
     window = pygame.display.set_mode((bg.WIDTH, bg.HEIGHT))
     clock = pygame.time.Clock()
     hero = Hero(window)
+    enemies = pygame.sprite.Group()
     background = bg.Background()
 
 
@@ -17,8 +19,10 @@ def run():
 
         background.update()
         background.render(window)
-        events.event()
+        events.event(enemies)
         hero.update()
+        events.make_enemies(enemies, window)
+        events.collide_enemy(hero, enemies)
         pygame.display.update()
         clock.tick(60)
 
