@@ -39,7 +39,7 @@ class Hero(pygame.sprite.Sprite):
         if keys[pygame.K_RIGHT]:
             self.image = self.move_right[self.pick_ind // 6]
             self.rect.x += self.speed
-        if keys[pygame.K_LEFT]:
+        if keys[pygame.K_LEFT] and self.rect.x > 0:
             self.image = self.move_left[self.pick_ind // 6]
             self.rect.x -= self.speed
         if keys[pygame.K_UP] and self.rect.y > 140:
