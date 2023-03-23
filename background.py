@@ -5,7 +5,7 @@ HEIGHT = 800
 
 class Background():
     def __init__(self):
-        self.image = pygame.transform.scale(pygame.image.load('Images/bg.jpg').convert(), (2048, HEIGHT))
+        self.image = pygame.transform.scale(pygame.image.load('Images/bg1.jpg').convert(), (2048, HEIGHT))
         self.rect = self.image.get_rect()
 
         self.bgY1 = 0
