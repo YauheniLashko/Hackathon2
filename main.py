@@ -12,6 +12,7 @@ def run():
     clock = pygame.time.Clock()
     hero = Hero(window)
     enemies = pygame.sprite.Group()
+    friends = pygame.sprite.Group()
     background = bg.Background()
 
 
@@ -21,7 +22,8 @@ def run():
         background.render(window)
         events.event(enemies)
         hero.update()
-        events.make_enemies(enemies, window)
+        events.make_friend(friends, window)
+        events.make_fish(enemies, window, friends)
         events.collide_enemy(hero, enemies)
         pygame.display.update()
         clock.tick(60)

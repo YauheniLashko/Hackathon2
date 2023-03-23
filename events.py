@@ -10,21 +10,30 @@ def event(enemies):
 
         if event.type == pygame.MOUSEBUTTONDOWN and event.button == 1:
             x,y = event.pos
-            for e in enemies:
-                if e.rect.collidepoint(x,y):
-                    e.kill()
+            for enemy in enemies:
+                if enemy.rect.collidepoint(x,y):
+                    enemies.remove(enemy)
+                    enemy.image = pygame.transform.scale(pygame.image.load('Images/good_fish.png'), (50,50))
 
-def make_enemies(enemies, window):
 
-    enemies.update()
+def make_fish(enemies, window, friends):
     enemies.draw(window)
     if len(enemies) < 5:
-        enemy = Enemy(randint(4, 6), enemies)
+        enemy = Enemy(randint(4, 6))
         enemies.add(enemy)
-        if enemy.rect.x > 0:
-            enemy.kill()
+        friends.add(enemy)
+
+def make_friend(friends, window):
+    friends.update()
+    friends.draw(window)
+
+
+
+
 
 def collide_enemy(hero, enemies):
     if pygame.sprite.spritecollide(hero, enemies, True):
-        hero.life -= 1
-        print(hero.life)
+        hero.health -= 1
+        print(hero.health)
+
+
