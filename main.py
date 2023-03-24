@@ -9,7 +9,7 @@ import background as bg
 def run():
     pygame.init()
     pygame.display.set_caption("Underwater Adventure")
-    window = pygame.display.set_mode((bg.WIDTH, bg.HEIGHT),)
+    window = pygame.display.set_mode((bg.WIDTH, bg.HEIGHT))
     clock = pygame.time.Clock()
     hero = Hero(window)
     enemies = pygame.sprite.Group()
@@ -17,16 +17,18 @@ def run():
     background = bg.Background()
     score = Scores(window)
 
-    while not score.game_over(hero):
-        background.update()
-        background.render(window)
+    while True:
         events.event(enemies, score)
-        hero.update()
-        score.show_health(hero)
-        score.draw_photo()
-        events.make_friend(friends, window)
-        events.make_fish(enemies, window, friends)
-        events.collide_enemy(hero, enemies)
+        if score.game:
+            background.update()
+            background.render(window)
+            hero.update()
+            score.show_health(hero)
+            score.draw_photo()
+            score.finish(hero)
+            events.make_friend(friends, window)
+            events.make_fish(enemies, window, friends)
+            events.collide_enemy(hero, enemies)
         pygame.display.update()
         clock.tick(60)
 
