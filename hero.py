@@ -28,9 +28,8 @@ class Hero(pygame.sprite.Sprite):
                           pygame.transform.scale(pygame.image.load('Images/left9.png').convert_alpha(), (250, 120)),
                           pygame.transform.scale(pygame.image.load('Images/left10.png').convert_alpha(), (250, 120))]
         self.image = self.move_right[self.pick_ind]
-        self.rect = self.image.get_rect(center=(600,400))  # размещаем персонажа по центру слева
+        self.rect = self.image.get_rect(center=(600, 400))  # размещаем персонажа по центру слева
         self.health = 3
-
 
     def update(self):
 

@@ -3,6 +3,7 @@ import pygame
 WIDTH = 1200
 HEIGHT = 800
 
+
 class Background():
     def __init__(self):
         self.image = pygame.transform.scale(pygame.image.load('Images/bg1.jpg').convert(), (2048, HEIGHT))
@@ -26,8 +27,6 @@ class Background():
         if self.bgX2 <= -self.rect.width:
             self.bgX2 = self.rect.width
 
-
     def render(self, window):
         window.blit(self.image, (self.bgX1, self.bgY1))
         window.blit(self.image, (self.bgX2, self.bgY2))
-

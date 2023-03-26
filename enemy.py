@@ -2,10 +2,11 @@ import pygame
 import background as bg
 from random import randint
 
+
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, speed):
         super().__init__()
-        self.image = pygame.transform.scale(pygame.image.load('Images/piranha.png'), (50,50))
+        self.image = pygame.transform.scale(pygame.image.load('Images/piranha.png'), (50, 50))
         self.rect = self.image.get_rect()
         self.speed = speed
         self.rect.y = randint(140, 620)
@@ -18,5 +19,3 @@ class Enemy(pygame.sprite.Sprite):
 
     def draw(self, window):
         window.blit(self.image, self.rect)
-
-

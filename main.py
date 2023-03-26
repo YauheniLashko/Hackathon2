@@ -26,10 +26,11 @@ def run():
 
     bg_music()
     while True:
-        pearl = Pearl() #создаем в цикле новый объект perl для разных картинок
-        events.event(enemies, score,group_pearls,pearl)
-        if score.game:
+        pearl = Pearl()  # создаем в цикле новый объект perl для разных картинок
 
+        events.event(enemies, score, group_pearls, pearl, window)
+
+        if score.game == True:
             background.update()
             background.render(window)
             hero.update()
@@ -38,8 +39,8 @@ def run():
             score.finish(hero)
             events.make_friend(friends, window)
             events.make_fish(enemies, window, friends)
-            events.move_pearl(window,group_pearls)
-            events.collide(hero, enemies,group_pearls)
+            events.move_pearl(window, group_pearls)
+            events.collide(hero, enemies, group_pearls)
         pygame.display.update()
         clock.tick(60)
 
