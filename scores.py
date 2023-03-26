@@ -1,5 +1,4 @@
 import pygame
-from time import sleep
 
 
 class Scores():
@@ -23,12 +22,12 @@ class Scores():
 
     def finish(self, hero):
         if hero.health < 1:
-            finish_text = pygame.font.SysFont('comicsansms', 50).render\
+            finish_text = pygame.font.SysFont('comicsansms', 50).render \
                 ('Ты очень понравился пираньям!', True, (209, 52, 52))
             self.window.blit(finish_text, (200, 400))
             self.game = False
         elif self.amount_photo > 9:
-            finish_text = pygame.font.SysFont('comicsansms', 50).render\
+            finish_text = pygame.font.SysFont('comicsansms', 50).render \
                 (f'Поздравляю! Ты сделал {self.amount_photo} фото!', True, (209, 52, 52))
             self.window.blit(finish_text, (200, 400))
             self.game = False
